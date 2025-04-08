@@ -11,9 +11,11 @@ models:
     # api_version: 2024-05-01-preview
     auth_type: api_key # or azure_managed_identity
     api_key: ${GRAPHRAG_API_KEY} # set this in the generated .env file
+    api_base: ${GRAPHRAG_API_BASE}
     # audience: "https://cognitiveservices.azure.com/.default"
     # organization: <organization_id>
-    model: gpt-4-turbo-preview
+    model: ${GRAPHRAG_API_MODEL}
+    encoding_model: cl100k_base  # 添加这一行，使用OpenAI的cl100k_base编码器
     # deployment_name: <azure_model_deployment_name>
     # encoding_model: cl100k_base # automatically set by tiktoken if left undefined
     model_supports_json: true # recommended if this is available for your model.
@@ -28,10 +30,12 @@ models:
     # api_base: https://<instance>.openai.azure.com
     # api_version: 2024-05-01-preview
     auth_type: api_key # or azure_managed_identity
-    api_key: ${GRAPHRAG_API_KEY}
+    api_key: ${GRAPHRAG_EMBEDDING_API_KEY}
+    api_base: ${GRAPHRAG_EMBEDDING_API_BASE}
     # audience: "https://cognitiveservices.azure.com/.default"
     # organization: <organization_id>
-    model: text-embedding-3-small
+    model: ${GRAPHRAG_EMBEDDING_MODEL}
+    encoding_model: cl100k_base  # 添加这一行，使用OpenAI的cl100k_base编码器
     # deployment_name: <azure_model_deployment_name>
     # encoding_model: cl100k_base # automatically set by tiktoken if left undefined
     model_supports_json: true # recommended if this is available for your model.
